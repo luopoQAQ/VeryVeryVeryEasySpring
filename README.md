@@ -12,30 +12,30 @@
 * 简单使用 <br>
 测试模块 <br>
 HelloController，映射/hello路径，并接受参数name，返回一个hello+name <br>
-![](https://github.com/luopoQAQ/goupiao/blob/master/test_image/hello.PNG)
+![](https://github.com/luopoQAQ/VeryVeryVeryEasySpring/tree/master/test_img/hello.PNG)
 
 运行结果 <br>
-![](https://github.com/luopoQAQ/goupiao/blob/master/test_image/hello_google.PNG)
+![](https://github.com/luopoQAQ/VeryVeryVeryEasySpring/tree/master/test_img/hello_google.PNG)
 
 
 GoodController，映射/good路径，返回good night <br>
-![](https://github.com/luopoQAQ/goupiao/blob/master/test_image/good.PNG)
+![](https://github.com/luopoQAQ/VeryVeryVeryEasySpring/tree/master/test_img/good.PNG)
 
 运行结果
-![](https://github.com/luopoQAQ/goupiao/blob/master/test_image/good_google.PNG)
+![](https://github.com/luopoQAQ/VeryVeryVeryEasySpring/tree/master/test_img/good_google.PNG)
 
 同时调用了接口goodAfternoon的good()方法，它的实现类被切点标记，则会有goodMorning()的前置通知与goodEvening()的后置通知在切点方法前后被调用 <br>
-![](https://github.com/luopoQAQ/goupiao/blob/master/test_image/qiemian.PNG)
+![](https://github.com/luopoQAQ/VeryVeryVeryEasySpring/tree/master/test_img/qiemian.PNG)
 
 Good接口及实现类 <br>
-![](https://github.com/luopoQAQ/goupiao/blob/master/test_image/goodInterface.PNG)
-![](https://github.com/luopoQAQ/goupiao/blob/master/test_image/goodInterfaceImpl.PNG)
+![](https://github.com/luopoQAQ/VeryVeryVeryEasySpring/tree/master/test_img/goodInterface.PNG)
+![](https://github.com/luopoQAQ/VeryVeryVeryEasySpring/tree/master/test_img/goodInterfaceImpl.PNG)
 
 切面类 <br>
-![](https://github.com/luopoQAQ/goupiao/blob/master/test_image/aspect.PNG)
+![](https://github.com/luopoQAQ/VeryVeryVeryEasySpring/tree/master/test_img/aspect.PNG)
 
 控制台打印bean的初始化流程： <br>
-![](https://github.com/luopoQAQ/goupiao/blob/master/test_image/kongzhitai.PNG)
+![](https://github.com/luopoQAQ/VeryVeryVeryEasySpring/tree/master/test_img/kongzhitai.PNG)
 
 #### 主要思路 <br>
 代码里注释很详细了，这里再把思路大体捋一下 <br>
