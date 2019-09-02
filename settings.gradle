@@ -1,0 +1,4 @@
+rootProject.name = 'easySpring'
+include 'springFramework'
+include 'springFrameworkTest'
+
