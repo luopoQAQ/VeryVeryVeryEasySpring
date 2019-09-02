@@ -20,7 +20,7 @@ HelloController，映射/hello路径，并接受参数name，返回一个hello+n
 GoodController，映射/good路径，返回good night <br>
 ![](https://github.com/luopoQAQ/VeryVeryVeryEasySpring/blob/master/test_img/good.PNG)
 
-运行结果
+运行结果 <br>
 ![](https://github.com/luopoQAQ/VeryVeryVeryEasySpring/blob/master/test_img/good_google.PNG)
 
 同时调用了接口goodAfternoon的good()方法，它的实现类被切点标记，则会有goodMorning()的前置通知与goodEvening()的后置通知在切点方法前后被调用 <br>
