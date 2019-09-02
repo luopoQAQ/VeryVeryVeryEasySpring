@@ -1,7 +1,7 @@
 # VeryVeryVeryEasySpring <br>
 ### 一个非常非常非常简陋的，实现Spring、SpringMVC主要注解的DEMO <br>
 
-> 做这个项目的目的，主要是为了加深一下对spring、springMVC的理解，天天框架框架，DI、IOC、AOP满嘴跑，但是对具体怎么实现的其实一直比较好奇，所以在网上搜了些资料，加上自己的理解，简单的实现了这个非常之简陋的框架 <br>
+> 做这个DEMO的起因，并不是真的想实现什么Spring，主要是为了加深一下对spring、springMVC框架的理解，所以在网上搜了些资料，加上自己的理解，简单的实现了这个非常之简陋的框架 <br>
 
 #### 简单使用介绍及实现功能： <br>
 * 主要功能 <br>
@@ -40,6 +40,7 @@ Good接口及实现类 <br>
 #### 主要思路 <br>
 代码里注释很详细了，这里再把思路大体捋一下 <br>
 
+```
   运行项目中springFrameeorkTest模块build后的jar，会扫描启动类所在包下的所有类 <br>
     对扫秒结果classList进行处理，将需要处理的类进行分类，注解了@Aspect的类加入aspectClassList，注解了@Component和@Controller的类加入needCreateClassList <br>
     对needCreateClassList进行尝试创建bean的处理，直到所有bean都创建完毕，needCreateClassList为空 <br>
@@ -68,6 +69,7 @@ Good接口及实现类 <br>
     继承Servlet并重写service，得到请求Request的路径，遍历mappingHandlerList并匹配，如果匹配失败，则向Response的write流写入404 <br>
     否则交由匹配的handler去处理，将得到的处理结果写入Response <br>
     将实现的Servlet交由Tomcat，并处理 <br>
+```
 
 怎么感觉越捋越乱了
 
