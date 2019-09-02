@@ -4,12 +4,12 @@
 > 做这个DEMO的起因，并不是真的想实现什么Spring，主要是为了加深一下对spring、springMVC框架的理解，所以在网上搜了些资料，加上自己的理解，简单的实现了这个非常之简陋的框架 <br>
 
 #### 简单使用介绍及实现功能： <br>
-###### 主要功能 <br>
+##### 主要功能 <br>
 这个框架demo主要实现了Spring中@Component、@Autowired、@Aspect、@Ponitcut、@Before、@After <br>
-以及SpringMVC中@Controller、@RequestMapping、@RequestParam注解 <br>
+    以及SpringMVC中@Controller、@RequestMapping、@RequestParam注解 <br>
 采用了常用的IOC/AOP思想，实现了简单的控制反转、依赖注入以及访问映射 <br>
 
-###### 简单使用 <br>
+##### 简单使用 <br>
 测试模块 <br>
 HelloController，映射/hello路径，并接受参数name，返回一个hello+name <br>
 ![](https://github.com/luopoQAQ/VeryVeryVeryEasySpring/blob/master/test_img/hello.PNG)
