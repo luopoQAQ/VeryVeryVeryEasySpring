@@ -6,19 +6,65 @@
 #### 简单使用介绍及实现功能： <br>
 ##### 主要功能 <br>
 这个框架demo主要实现了Spring中@Component、@Autowired、@Aspect、@Ponitcut、@Before、@After <br>
-    以及SpringMVC中@Controller、@RequestMapping、@RequestParam注解 <br>
+        以及SpringMVC中@Controller、@RequestMapping、@RequestParam注解 <br>
 采用了常用的IOC/AOP思想，实现了简单的控制反转、依赖注入以及访问映射 <br>
 
 ##### 简单使用 <br>
 测试模块 <br>
 HelloController，映射/hello路径，并接受参数name，返回一个hello+name <br>
-![](https://github.com/luopoQAQ/VeryVeryVeryEasySpring/blob/master/test_img/hello.PNG)
+```java
+package com.luopo.easySpringTest.controller;
+
+import com.luopo.easySpring.spring.annotation.AutoWired;
+import com.luopo.easySpring.springMVC.annotation.Controller;
+import com.luopo.easySpring.springMVC.annotation.RequestMapping;
+import com.luopo.easySpring.springMVC.annotation.RequestParam;
+import com.luopo.easySpringTest.component.HelloService;
+
+@Controller
+public class HelloController {
+
+    @AutoWired
+    HelloService helloService;
+
+    @RequestMapping("/hello")
+    public String hello(@RequestParam("name") String name) {
+        if (name == null) {
+            return "未指定name";
+        }
+
+        return helloService.hello(name);
+    }
+
+}
+```
 
 运行结果 <br>
 ![](https://github.com/luopoQAQ/VeryVeryVeryEasySpring/blob/master/test_img/hello_google.PNG)
 
 GoodController，映射/good路径，返回good night <br>
-![](https://github.com/luopoQAQ/VeryVeryVeryEasySpring/blob/master/test_img/good.PNG)
+```java
+package com.luopo.easySpringTest.controller;
+
+import com.luopo.easySpring.spring.annotation.AutoWired;
+import com.luopo.easySpring.springMVC.annotation.Controller;
+import com.luopo.easySpring.springMVC.annotation.RequestMapping;
+import com.luopo.easySpringTest.component.goodAfternoon.GoodAfternoon;
+
+@Controller
+public class GoodController {
+
+    @AutoWired
+    GoodAfternoon goodAfternoon;
+
+    @RequestMapping("/good")
+    public String good() {
+        goodAfternoon.good();
+        return "Good Night!";
+    }
+}
+
+```
 
 运行结果 <br>
 ![](https://github.com/luopoQAQ/VeryVeryVeryEasySpring/blob/master/test_img/good_google.PNG)
@@ -27,11 +73,57 @@ GoodController，映射/good路径，返回good night <br>
 ![](https://github.com/luopoQAQ/VeryVeryVeryEasySpring/blob/master/test_img/qiemian.PNG)
 
 Good接口及实现类 <br>
-![](https://github.com/luopoQAQ/VeryVeryVeryEasySpring/blob/master/test_img/goodInterface.PNG)
-![](https://github.com/luopoQAQ/VeryVeryVeryEasySpring/blob/master/test_img/goodInterfaceImpl.PNG)
+```java
+package com.luopo.easySpringTest.component.goodAfternoon;
+
+public interface GoodAfternoon {
+    public void good();
+}
+```
+
+```java
+package com.luopo.easySpringTest.component.goodAfternoon.goodAfternoonImpl;
+
+import com.luopo.easySpring.spring.annotation.Component;
+import com.luopo.easySpringTest.component.goodAfternoon.GoodAfternoon;
+
+@Component
+public class GoodAfternoonImpl implements GoodAfternoon {
+    @Override
+    public void good() {
+        System.out.println("Good Afternoon!");
+
+    }
+}
+```
 
 切面类 <br>
-![](https://github.com/luopoQAQ/VeryVeryVeryEasySpring/blob/master/test_img/aspect.PNG)
+```java
+package com.luopo.easySpringTest.aspect;
+
+import com.luopo.easySpring.spring.annotation.*;
+@Aspect
+@Component
+public class GoodAspect {
+
+    @Pointcut("com.luopo.easySpringTest.component." +
+            "goodAfternoon.goodAfternoonImpl.GoodAfternoonImpl.good()")
+    public void goodPoint() {
+    }
+
+    @Before("goodPoint()")
+    public void goodMorning() {
+        System.out.println("Good Morning!");
+
+    }
+
+    @After("goodPoint()")
+    public void goodEvening() {
+        System.out.println("Good Evening!");
+    }
+}
+
+```
 
 控制台打印bean的初始化流程： <br>
 ![](https://github.com/luopoQAQ/VeryVeryVeryEasySpring/blob/master/test_img/kongzhitai.PNG)
@@ -74,6 +166,7 @@ Good接口及实现类 <br>
 >> 将实现的Servlet交由Tomcat，并处理 <br>
 
 怎么感觉越捋越乱了
+主要类就是[BeanFactory](https://github.com/luopoQAQ/VeryVeryVeryEasySpring/blob/master/springFramework/src/main/java/com/luopo/easySpring/spring/util/BeanFactory.java)、[MappingHandler](https://github.com/luopoQAQ/VeryVeryVeryEasySpring/blob/master/springFramework/src/main/java/com/luopo/easySpring/springMVC/util/HandlerManager.java)，有兴趣自己看吧
 
 
 
